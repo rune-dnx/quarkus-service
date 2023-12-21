@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_ED259141-3491-42DF-8832-FBAD3784DF0A" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_C0840A8E-569D-4B07-AEEF-E9CEA9A77F79" name="Service" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_ED259141-3491-42DF-8832-FBAD3784DF0A">
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_ED259141-3491-42DF-8832-FBAD3784DF0A" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:included1="https://kiegroup.org/dmn/_9A62733B-CFDA-4E9B-9C57-04D2B6BC527E" id="_C0840A8E-569D-4B07-AEEF-E9CEA9A77F79" name="Service" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_ED259141-3491-42DF-8832-FBAD3784DF0A">
   <dmn:extensionElements/>
+  <dmn:import id="_9D295BFA-D281-4480-9F27-858D84D9DFE7" name="Visa" namespace="https://kiegroup.org/dmn/_9A62733B-CFDA-4E9B-9C57-04D2B6BC527E" locationURI="Check valid id.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
   <dmn:decision id="_A4ED4C63-75C4-4A77-B6DA-F82FCE69C1BC" name="Validate">
     <dmn:extensionElements/>
     <dmn:variable id="_A74D39CB-25FE-4DE2-A19E-14AB3F4CDC52" name="Validate" typeRef="string"/>
     <dmn:informationRequirement id="_20E7DDDC-88C7-4C99-98D9-ADA2131FD89F">
       <dmn:requiredInput href="#_79A17191-CB80-4EE6-9BA0-942EC8BE9B42"/>
     </dmn:informationRequirement>
-    <dmn:literalExpression id="_F04AAC1C-3C6A-48A5-B4DB-9BD344727A7C">
-      <dmn:text>if Age &gt;=18 then "Cool Dude, you are granted access to the party" else "Sorry kid, You're not getting in!!"</dmn:text>
-    </dmn:literalExpression>
+    <dmn:knowledgeRequirement id="_625CE4D6-93C5-414B-B9FF-978BE86BC78E">
+      <dmn:requiredKnowledge href="https://kiegroup.org/dmn/_9A62733B-CFDA-4E9B-9C57-04D2B6BC527E#_0B936BAA-D0CE-4A41-8ECE-42DC1860041D"/>
+    </dmn:knowledgeRequirement>
+    <dmn:invocation id="_F04AAC1C-3C6A-48A5-B4DB-9BD344727A7C">
+      <dmn:literalExpression id="_65792132-3042-4C35-80CE-459B31332D3B">
+        <dmn:text>Visa.Check valid id</dmn:text>
+      </dmn:literalExpression>
+      <dmn:binding>
+        <dmn:parameter id="_439139BA-FD1F-4985-A93E-3DF1FAAF11D3" name="Age" typeRef="number"/>
+        <dmn:literalExpression id="_CF34A93E-A967-401C-B257-FE5AF73BDAB5">
+          <dmn:text>Age</dmn:text>
+        </dmn:literalExpression>
+      </dmn:binding>
+    </dmn:invocation>
   </dmn:decision>
   <dmn:inputData id="_79A17191-CB80-4EE6-9BA0-942EC8BE9B42" name="Age">
     <dmn:extensionElements/>
@@ -20,7 +32,13 @@
       <di:extension>
         <kie:ComponentsWidthsExtension>
           <kie:ComponentWidths dmnElementRef="_F04AAC1C-3C6A-48A5-B4DB-9BD344727A7C">
-            <kie:width>750</kie:width>
+            <kie:width>50</kie:width>
+            <kie:width>120</kie:width>
+            <kie:width>190</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_65792132-3042-4C35-80CE-459B31332D3B"/>
+          <kie:ComponentWidths dmnElementRef="_CF34A93E-A967-401C-B257-FE5AF73BDAB5">
+            <kie:width>190</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
@@ -30,7 +48,7 @@
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="714" y="128" width="215" height="83"/>
+        <dc:Bounds x="288" y="58" width="215" height="83"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-drg-_79A17191-CB80-4EE6-9BA0-942EC8BE9B42" dmnElementRef="_79A17191-CB80-4EE6-9BA0-942EC8BE9B42" isCollapsed="false">
@@ -39,12 +57,29 @@
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="771" y="320" width="100" height="50"/>
+        <dc:Bounds x="345" y="250" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_0B936BAA-D0CE-4A41-8ECE-42DC1860041D" dmnElementRef="included1:_0B936BAA-D0CE-4A41-8ECE-42DC1860041D" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="616" y="131" width="200" height="200"/>
+        <dmndi:DMNLabel/>
+        <dmndi:DMNDecisionServiceDividerLine>
+          <di:waypoint x="616" y="231"/>
+          <di:waypoint x="816" y="231"/>
+        </dmndi:DMNDecisionServiceDividerLine>
+      </dmndi:DMNShape>
       <dmndi:DMNEdge id="dmnedge-drg-_20E7DDDC-88C7-4C99-98D9-ADA2131FD89F-AUTO-TARGET" dmnElementRef="_20E7DDDC-88C7-4C99-98D9-ADA2131FD89F">
-        <di:waypoint x="821" y="345"/>
-        <di:waypoint x="821.5" y="211"/>
+        <di:waypoint x="395" y="275"/>
+        <di:waypoint x="395.5" y="141"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_625CE4D6-93C5-414B-B9FF-978BE86BC78E-AUTO-TARGET" dmnElementRef="_625CE4D6-93C5-414B-B9FF-978BE86BC78E">
+        <di:waypoint x="716" y="231"/>
+        <di:waypoint x="503" y="99.5"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
