@@ -8,7 +8,7 @@
       <dmn:requiredInput href="#_79A17191-CB80-4EE6-9BA0-942EC8BE9B42"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_F04AAC1C-3C6A-48A5-B4DB-9BD344727A7C">
-      <dmn:text>if Age &gt;=18 then "Cool Dude, you are grated access to the party" else "Sorry kid, You are not getting in"</dmn:text>
+      <dmn:text>if Age &gt;=18 then "Cool Dude, you are granted access to the party" else "Sorry kid, You're not getting in!!"</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmn:inputData id="_79A17191-CB80-4EE6-9BA0-942EC8BE9B42" name="Age">
